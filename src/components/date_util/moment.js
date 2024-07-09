@@ -20,18 +20,18 @@ export default {
     return moment(date).subtract(1, 'months').startOf('month').toDate()
   },
   validateDateRange: (newDate, min, max) => {
-    let max_date = new Date(max);
-    let min_date = new Date(min);
+    let max_date = new Date(max)
+    let min_date = new Date(min)
 
     if (max && moment(newDate).isAfter(max_date)) {
-      return max_date;
+      return max_date
     }
 
     if (min && moment(newDate).isBefore(min_date)) {
-      return min_date;
+      return min_date
     }
 
-    return newDate;
+    return newDate
   },
   localeData: (options) => {
     let default_locale = {
@@ -45,7 +45,7 @@ export default {
       daysOfWeek: moment.weekdaysMin(),
       monthNames: moment.monthsShort(),
       firstDay: moment.localeData().firstDayOfWeek()
-    };
+    }
 
     return { ...default_locale, ...options }
   },

@@ -66,7 +66,7 @@ const DateUtil = {
       daysOfWeek: [],//days of week (short),
       monthNames: [],// month names (short),
       firstDay: 0
-    };
+    }
 
     return { ...default_locale, ...options }
   },

@@ -43,3 +43,11 @@ import DateRangePicker from 'buefy-daterange-picker'
 ```
 npm run docs:dev
 ```
+
+
+## Build
+Tested with node v18.20.3 and npm 10.7.0
+```
+npm install
+npm run lib
+```

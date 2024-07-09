@@ -31,9 +31,9 @@ export default {
   filters: {
     formatNumber: (value) => {
       if (value < 10) {
-        return "0" + value.toString();
+        return '0' + value.toString()
       }
-      return value.toString();
+      return value.toString()
     },
   },
   props: {
@@ -51,72 +51,72 @@ export default {
     },
     currentTime: {
       default() {
-        return new Date();
+        return new Date()
       },
     },
   },
   data() {
-    let current = this.currentTime ? this.currentTime : new Date();
-    let hours = current.getHours();
+    let current = this.currentTime ? this.currentTime : new Date()
+    let hours = current.getHours()
     return {
       hour: this.hour24 ? hours : hours % 12 || 12,
       minute:
         current.getMinutes() - (current.getMinutes() % this.miniuteIncrement),
       second: current.getSeconds(),
-      ampm: hours < 12 ? "AM" : "PM",
-    };
+      ampm: hours < 12 ? 'AM' : 'PM',
+    }
   },
   computed: {
     hours() {
-      let values = [];
-      let max = this.hour24 ? 24 : 12;
+      let values = []
+      let max = this.hour24 ? 24 : 12
       for (let i = 0; i < max; i++) {
-        values.push(this.hour24 ? i : i + 1);
+        values.push(this.hour24 ? i : i + 1)
       }
-      return values;
+      return values
     },
     minutes() {
-      let values = [];
-      let max = 60;
+      let values = []
+      let max = 60
       for (let i = 0; i < max; i = i + this.miniuteIncrement) {
-        values.push(i);
+        values.push(i)
       }
-      return values;
+      return values
     },
   },
   watch: {
     hour() {
-      this.onChange();
+      this.onChange()
     },
     minute() {
-      this.onChange();
+      this.onChange()
     },
     second() {
-      this.onChange();
+      this.onChange()
     },
     ampm() {
-      this.onChange();
+      this.onChange()
     },
   },
   methods: {
     getHour() {
       if (this.hour24) {
-        return this.hour;
+        return this.hour
       } else {
         if (this.hour === 12) {
-          return this.ampm === "AM" ? 0 : 12;
+          return this.ampm === 'AM' ? 0 : 12
         } else {
-          return this.hour + (this.ampm === "PM" ? 12 : 0);
+          return this.hour + (this.ampm === 'PM' ? 12 : 0)
         }
       }
     },
     onChange() {
-      this.$emit("update", {
+      this.$emit('update', {
         hours: this.getHour(),
         minutes: this.minute,
         seconds: this.second,
-      });
+      })
     },
   },
-};
+}
 </script>

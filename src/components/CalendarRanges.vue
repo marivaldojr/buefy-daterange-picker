@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import dateUtilMixin from "./dateUtilMixin";
+import dateUtilMixin from './dateUtilMixin'
 
 export default {
   mixins: [dateUtilMixin],
@@ -37,24 +37,24 @@ export default {
   data() {
     return {
       customRangeActive: false,
-    };
+    }
   },
   methods: {
     clickRange(range) {
-      this.customRangeActive = false;
-      this.$emit("clickRange", range);
+      this.customRangeActive = false
+      this.$emit('clickRange', range)
     },
     clickCustomRange() {
-      this.customRangeActive = true;
-      this.$emit("showCustomRange");
+      this.customRangeActive = true
+      this.$emit('showCustomRange')
     },
     range_class(range) {
-      return { active: range.selected === true };
+      return { active: range.selected === true }
     },
   },
   computed: {
     listedRanges() {
-      if (!this.ranges) return false;
+      if (!this.ranges) return false
       return Object.keys(this.ranges).map((value) => {
         return {
           label: value,
@@ -65,15 +65,15 @@ export default {
               this.ranges[value][0]
             ) &&
             this.$dateUtil.isSame(this.selected.endDate, this.ranges[value][1]),
-        };
-      });
+        }
+      })
     },
     selectedRange() {
-      return this.listedRanges.find((r) => r.selected === true);
+      return this.listedRanges.find((r) => r.selected === true)
     },
     showCustomRangeLabel() {
-      return !this.alwaysShowCalendars;
+      return !this.alwaysShowCalendars
     },
   },
-};
+}
 </script>

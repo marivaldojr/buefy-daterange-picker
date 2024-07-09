@@ -183,19 +183,19 @@
 </template>
 
 <script>
-import dateUtilMixin from "./dateUtilMixin";
-import Calendar from "./Calendar.vue";
-import CalendarTime from "./CalendarTime";
-import CalendarRanges from "./CalendarRanges";
-import { getDateUtil } from "./util";
+import dateUtilMixin from './dateUtilMixin'
+import Calendar from './Calendar.vue'
+import CalendarTime from './CalendarTime'
+import CalendarRanges from './CalendarRanges'
+import { getDateUtil } from './util'
 
 export default {
   inheritAttrs: false,
   components: { Calendar, CalendarTime, CalendarRanges },
   mixins: [dateUtilMixin],
   model: {
-    prop: "dateRange",
-    event: "update",
+    prop: 'dateRange',
+    event: 'update',
   },
   props: {
     /**
@@ -205,7 +205,7 @@ export default {
     minDate: {
       type: [String, Date],
       default() {
-        return null;
+        return null
       },
     },
     /**
@@ -215,7 +215,7 @@ export default {
     maxDate: {
       type: [String, Date],
       default() {
-        return null;
+        return null
       },
     },
     /**
@@ -289,7 +289,7 @@ export default {
     localeData: {
       type: Object,
       default() {
-        return {};
+        return {}
       },
     },
     /**
@@ -314,60 +314,60 @@ export default {
       type: [Object, Boolean],
       default() {
         let localeRanges = this.localeData.localeRanges || {
-          today: "Today",
-          yesterday: "Yesterday",
-          last1Week: "Last 1 week",
-          thisMonth: "This month",
-          lastMonth: "Last month",
-          thisYear: "This year",
-        };
-        let today = new Date();
-        today.setHours(0, 0, 0, 0);
-        let todayEnd = new Date();
-        todayEnd.setHours(23, 59, 59, 0);
+          today: 'Today',
+          yesterday: 'Yesterday',
+          last1Week: 'Last 1 week',
+          thisMonth: 'This month',
+          lastMonth: 'Last month',
+          thisYear: 'This year',
+        }
+        let today = new Date()
+        today.setHours(0, 0, 0, 0)
+        let todayEnd = new Date()
+        todayEnd.setHours(23, 59, 59, 0)
 
-        let yesterday = new Date();
-        yesterday.setDate(today.getDate() - 1);
-        yesterday.setHours(0, 0, 0, 0);
+        let yesterday = new Date()
+        yesterday.setDate(today.getDate() - 1)
+        yesterday.setHours(0, 0, 0, 0)
 
-        let yesterdayEnd = new Date();
-        yesterdayEnd.setDate(today.getDate() - 1);
-        yesterdayEnd.setHours(23, 59, 59, 0);
+        let yesterdayEnd = new Date()
+        yesterdayEnd.setDate(today.getDate() - 1)
+        yesterdayEnd.setHours(23, 59, 59, 0)
 
-        let last1Week = new Date();
-        last1Week.setDate(today.getDate() - 7);
-        last1Week.setHours(0, 0, 0, 0);
+        let last1Week = new Date()
+        last1Week.setDate(today.getDate() - 7)
+        last1Week.setHours(0, 0, 0, 0)
 
-        let thisMonthStart = new Date(today.getFullYear(), today.getMonth(), 1);
+        let thisMonthStart = new Date(today.getFullYear(), today.getMonth(), 1)
         let thisMonthEnd = new Date(
           today.getFullYear(),
           today.getMonth() + 1,
           0
-        );
-        thisMonthEnd.setHours(23, 59, 59, 0);
+        )
+        thisMonthEnd.setHours(23, 59, 59, 0)
 
         let lastMonthStart = new Date(
           today.getFullYear(),
           today.getMonth() - 1,
           1
-        );
-        let lastMonthEnd = new Date(today.getFullYear(), today.getMonth(), 0);
-        lastMonthEnd.setHours(23, 59, 59, 0);
+        )
+        let lastMonthEnd = new Date(today.getFullYear(), today.getMonth(), 0)
+        lastMonthEnd.setHours(23, 59, 59, 0)
 
-        let thisYearStart = new Date(today.getFullYear(), 0, 1);
-        let thisYearEnd = new Date(today.getFullYear(), 11, 31);
-        thisYearEnd.setHours(23, 59, 59, 0);
+        let thisYearStart = new Date(today.getFullYear(), 0, 1)
+        let thisYearEnd = new Date(today.getFullYear(), 11, 31)
+        thisYearEnd.setHours(23, 59, 59, 0)
 
-        let rangesObject = {};
+        let rangesObject = {}
 
-        rangesObject[localeRanges.today] = [today, todayEnd];
-        rangesObject[localeRanges.yesterday] = [yesterday, yesterdayEnd];
-        rangesObject[localeRanges.last1Week] = [last1Week, todayEnd];
-        rangesObject[localeRanges.thisMonth] = [thisMonthStart, thisMonthEnd];
-        rangesObject[localeRanges.lastMonth] = [lastMonthStart, lastMonthEnd];
-        rangesObject[localeRanges.thisYear] = [thisYearStart, thisYearEnd];
+        rangesObject[localeRanges.today] = [today, todayEnd]
+        rangesObject[localeRanges.yesterday] = [yesterday, yesterdayEnd]
+        rangesObject[localeRanges.last1Week] = [last1Week, todayEnd]
+        rangesObject[localeRanges.thisMonth] = [thisMonthStart, thisMonthEnd]
+        rangesObject[localeRanges.lastMonth] = [lastMonthStart, lastMonthEnd]
+        rangesObject[localeRanges.thisYear] = [thisYearStart, thisYearEnd]
 
-        return rangesObject;
+        return rangesObject
       },
     },
     /**
@@ -375,7 +375,7 @@ export default {
      */
     opens: {
       type: String,
-      default: "center",
+      default: 'center',
     },
     /**
        function(classes, date) - special prop type function which accepts 2 params:
@@ -399,7 +399,7 @@ export default {
      */
     dateUtil: {
       type: [Object, String],
-      default: "moment",
+      default: 'moment',
     },
     /**
      * Disabled state. If true picker do not popup on click.
@@ -413,59 +413,59 @@ export default {
      */
     controlContainerClass: {
       type: [Object, String],
-      default: "form-control reportrange-text",
+      default: 'form-control reportrange-text',
     },
   },
   data() {
     //copy locale data object
-    const util = getDateUtil(this.dateUtil);
-    let data = { locale: util.localeData({ ...this.localeData }) };
+    const util = getDateUtil(this.dateUtil)
+    let data = { locale: util.localeData({ ...this.localeData }) }
 
-    let startDate = this.dateRange.startDate || null;
-    let endDate = this.dateRange.endDate || null;
+    let startDate = this.dateRange.startDate || null
+    let endDate = this.dateRange.endDate || null
 
-    data.monthDate = startDate ? new Date(startDate) : new Date();
+    data.monthDate = startDate ? new Date(startDate) : new Date()
     //get next month date
-    data.nextMonthDate = util.nextMonth(data.monthDate);
+    data.nextMonthDate = util.nextMonth(data.monthDate)
 
-    data.start = startDate ? new Date(startDate) : null;
+    data.start = startDate ? new Date(startDate) : null
     if (this.singleDatePicker) {
       // ignore endDate for singleDatePicker
-      data.end = data.start;
+      data.end = data.start
     } else {
-      data.end = endDate ? new Date(endDate) : null;
+      data.end = endDate ? new Date(endDate) : null
     }
-    data.in_selection = false;
-    data.open = false;
+    data.in_selection = false
+    data.open = false
     //When alwaysShowCalendars = false and custom range is clicked
-    data.showCustomRangeCalendars = false;
+    data.showCustomRangeCalendars = false
 
     // update day names order to firstDay
     if (data.locale.firstDay !== 0) {
-      let iterator = data.locale.firstDay;
+      let iterator = data.locale.firstDay
       while (iterator > 0) {
-        data.locale.daysOfWeek.push(data.locale.daysOfWeek.shift());
-        iterator--;
+        data.locale.daysOfWeek.push(data.locale.daysOfWeek.shift())
+        iterator--
       }
     }
-    return data;
+    return data
   },
   methods: {
     dateFormatFn(classes, date) {
-      let dt = new Date(date);
-      dt.setHours(0, 0, 0, 0);
-      let start = new Date(this.start);
-      start.setHours(0, 0, 0, 0);
-      let end = new Date(this.end);
-      end.setHours(0, 0, 0, 0);
+      let dt = new Date(date)
+      dt.setHours(0, 0, 0, 0)
+      let start = new Date(this.start)
+      start.setHours(0, 0, 0, 0)
+      let end = new Date(this.end)
+      end.setHours(0, 0, 0, 0)
 
-      classes["in-range"] = dt >= start && dt <= end;
+      classes['in-range'] = dt >= start && dt <= end
 
-      return this.dateFormat ? this.dateFormat(classes, date) : classes;
+      return this.dateFormat ? this.dateFormat(classes, date) : classes
     },
     changeLeftMonth(value) {
-      let newDate = new Date(value.year, value.month - 1, 1);
-      this.monthDate = newDate;
+      let newDate = new Date(value.year, value.month - 1, 1)
+      this.monthDate = newDate
       if (
         this.linkedCalendars ||
         this.$dateUtil.yearMonth(this.monthDate) >=
@@ -475,7 +475,7 @@ export default {
           this.$dateUtil.nextMonth(newDate),
           this.minDate,
           this.maxDate
-        );
+        )
         if (
           !this.singleDatePicker &&
           this.$dateUtil.yearMonth(this.monthDate) ===
@@ -485,7 +485,7 @@ export default {
             this.$dateUtil.prevMonth(this.monthDate),
             this.minDate,
             this.maxDate
-          );
+          )
         }
       }
       /**
@@ -494,11 +494,11 @@ export default {
        * @param {monthDate} date displayed (first day of the month)
        * @param calendarIndex int 0 - first(left) calendar, 1 - second(right) calendar
        */
-      this.$emit("change-month", this.monthDate, 0);
+      this.$emit('change-month', this.monthDate, 0)
     },
     changeRightMonth(value) {
-      let newDate = new Date(value.year, value.month - 1, 1);
-      this.nextMonthDate = newDate;
+      let newDate = new Date(value.year, value.month - 1, 1)
+      this.nextMonthDate = newDate
       if (
         this.linkedCalendars ||
         this.$dateUtil.yearMonth(this.nextMonthDate) <=
@@ -508,7 +508,7 @@ export default {
           this.$dateUtil.prevMonth(newDate),
           this.minDate,
           this.maxDate
-        );
+        )
         if (
           this.$dateUtil.yearMonth(this.monthDate) ===
           this.$dateUtil.yearMonth(this.nextMonthDate)
@@ -517,65 +517,65 @@ export default {
             this.$dateUtil.nextMonth(this.nextMonthDate),
             this.minDate,
             this.maxDate
-          );
+          )
         }
       }
-      this.$emit("change-month", this.monthDate, 1);
+      this.$emit('change-month', this.monthDate, 1)
     },
     normalizeDatetime(value, oldValue) {
-      let newDate = new Date(value);
+      let newDate = new Date(value)
       if (this.timePicker && oldValue) {
-        newDate.setHours(oldValue.getHours());
-        newDate.setMinutes(oldValue.getMinutes());
-        newDate.setSeconds(oldValue.getSeconds());
-        newDate.setMilliseconds(oldValue.getMilliseconds());
+        newDate.setHours(oldValue.getHours())
+        newDate.setMinutes(oldValue.getMinutes())
+        newDate.setSeconds(oldValue.getSeconds())
+        newDate.setMilliseconds(oldValue.getMilliseconds())
       }
 
-      return newDate;
+      return newDate
     },
     dateClick(value) {
       if (this.in_selection) {
-        this.in_selection = false;
-        this.end = this.normalizeDatetime(value, this.end);
+        this.in_selection = false
+        this.end = this.normalizeDatetime(value, this.end)
 
         if (this.end < this.start) {
-          this.in_selection = true;
-          this.start = this.normalizeDatetime(value, this.start);
+          this.in_selection = true
+          this.start = this.normalizeDatetime(value, this.start)
         }
         if (!this.in_selection) {
-          this.onSelect();
-          if (this.autoApply) this.clickedApply();
+          this.onSelect()
+          if (this.autoApply) this.clickedApply()
         }
       } else {
-        this.start = this.normalizeDatetime(value, this.start);
-        this.end = this.normalizeDatetime(value, this.end);
+        this.start = this.normalizeDatetime(value, this.start)
+        this.end = this.normalizeDatetime(value, this.end)
         if (!this.singleDatePicker) {
-          this.in_selection = true;
+          this.in_selection = true
         } else {
-          this.onSelect();
-          if (this.autoApply) this.clickedApply();
+          this.onSelect()
+          if (this.autoApply) this.clickedApply()
         }
       }
     },
     hoverDate(value) {
-      let dt = this.normalizeDatetime(value, this.end);
-      if (this.in_selection && dt >= this.start) this.end = dt;
+      let dt = this.normalizeDatetime(value, this.end)
+      if (this.in_selection && dt >= this.start) this.end = dt
       /**
        * Emits event when the mouse hovers a date
        * @param {Date} value the date that is being hovered
        */
-      this.$emit("hoverDate", value);
+      this.$emit('hoverDate', value)
     },
     onClickPicker() {
       if (!this.disabled) {
-        this.togglePicker(null, true);
+        this.togglePicker(null, true)
       }
     },
     togglePicker(value, event) {
-      if (typeof value === "boolean") {
-        this.open = value;
+      if (typeof value === 'boolean') {
+        this.open = value
       } else {
-        this.open = !this.open;
+        this.open = !this.open
       }
 
       if (event === true)
@@ -584,37 +584,37 @@ export default {
          * @param {boolean} open - the current state of the picker
          * @param {Function} togglePicker - function (show, event) which can be used to control the picker. where "show" is the new state and "event" is boolean indicating whether a new event should be raised
          */
-        this.$emit("toggle", this.open, this.togglePicker);
+        this.$emit('toggle', this.open, this.togglePicker)
     },
     clickedApply() {
       // this.open = false
-      this.togglePicker(false, true);
+      this.togglePicker(false, true)
       /**
        * Emits when the user selects a range from the picker and clicks "apply" (if autoApply is true).
        * @param {json} value - json object containing the dates: {startDate, endDate}
        */
-      this.$emit("update", { startDate: this.start, endDate: this.end });
+      this.$emit('update', { startDate: this.start, endDate: this.end })
     },
     onSelect() {
       /**
        * Emits when the user selects a range from the picker.
        * @param {json} value - json object containing the dates: {startDate, endDate}
        */
-      this.$emit("select", { startDate: this.start, endDate: this.end });
+      this.$emit('select', { startDate: this.start, endDate: this.end })
     },
     clickAway() {
       if (this.open) {
         // reset start and end
-        let startDate = this.dateRange.startDate;
-        let endDate = this.dateRange.endDate;
-        this.start = startDate ? new Date(startDate) : null;
-        this.end = endDate ? new Date(endDate) : null;
+        let startDate = this.dateRange.startDate
+        let endDate = this.dateRange.endDate
+        this.start = startDate ? new Date(startDate) : null
+        this.end = endDate ? new Date(endDate) : null
         // this.open = false
-        this.togglePicker(false, true);
+        this.togglePicker(false, true)
       }
     },
     clickRange(value) {
-      this.in_selection = false;
+      this.in_selection = false
 
       if (
         this.$dateUtil.isValidDate(value[0]) &&
@@ -624,93 +624,93 @@ export default {
           new Date(value[0]),
           this.minDate,
           this.maxDate
-        );
+        )
         this.end = this.$dateUtil.validateDateRange(
           new Date(value[1]),
           this.minDate,
           this.maxDate
-        );
+        )
         this.changeLeftMonth({
           month: this.start.getMonth() + 1,
           year: this.start.getFullYear(),
-        });
+        })
       } else {
-        this.start = null;
-        this.end = null;
+        this.start = null
+        this.end = null
       }
 
-      this.onSelect();
+      this.onSelect()
 
-      if (this.autoApply) this.clickedApply();
+      if (this.autoApply) this.clickedApply()
     },
     onUpdateStartTime(value) {
-      let start = new Date(this.start);
-      start.setHours(value.hours);
-      start.setMinutes(value.minutes);
-      start.setSeconds(value.seconds);
+      let start = new Date(this.start)
+      start.setHours(value.hours)
+      start.setMinutes(value.minutes)
+      start.setSeconds(value.seconds)
 
       this.start = this.$dateUtil.validateDateRange(
         start,
         this.minDate,
         this.maxDate
-      );
+      )
     },
     onUpdateEndTime(value) {
-      let end = new Date(this.end);
-      end.setHours(value.hours);
-      end.setMinutes(value.minutes);
-      end.setSeconds(value.seconds);
+      let end = new Date(this.end)
+      end.setHours(value.hours)
+      end.setMinutes(value.minutes)
+      end.setSeconds(value.seconds)
 
       this.end = this.$dateUtil.validateDateRange(
         end,
         this.minDate,
         this.maxDate
-      );
+      )
     },
   },
   computed: {
     showCalendars() {
-      return this.alwaysShowCalendars || this.showCustomRangeCalendars;
+      return this.alwaysShowCalendars || this.showCustomRangeCalendars
     },
     startText() {
-      if (this.start === null) return "";
+      if (this.start === null) return ''
 
-      return this.$dateUtil.format(this.start, this.locale.format);
+      return this.$dateUtil.format(this.start, this.locale.format)
     },
     endText() {
-      if (this.end === null) return "";
-      return this.$dateUtil.format(this.end, this.locale.format);
+      if (this.end === null) return ''
+      return this.$dateUtil.format(this.end, this.locale.format)
     },
     rangeText() {
-      return "";
+      return ''
       // TODO: Fix later
-      let range = this.startText;
+      let range = this.startText
       if (!this.singleDatePicker) {
-        range += this.locale.separator + this.endText;
+        range += this.locale.separator + this.endText
       }
-      return range;
+      return range
     },
     min() {
-      return this.minDate ? new Date(this.minDate) : null;
+      return this.minDate ? new Date(this.minDate) : null
     },
     max() {
-      return this.maxDate ? new Date(this.maxDate) : null;
+      return this.maxDate ? new Date(this.maxDate) : null
     },
     pickerStyles() {
       return {
-        "show-calendar": this.open,
-        "show-ranges": !!this.ranges,
-        "show-weeknumbers": this.showWeekNumbers,
+        'show-calendar': this.open,
+        'show-ranges': !!this.ranges,
+        'show-weeknumbers': this.showWeekNumbers,
         single: this.singleDatePicker,
-        opensright: this.opens === "right",
-        opensleft: this.opens === "left",
-        openscenter: this.opens === "center",
+        opensright: this.opens === 'right',
+        opensleft: this.opens === 'left',
+        openscenter: this.opens === 'center',
         linked: this.linkedCalendars,
-        "hide-calendars": !this.showCalendars,
-      };
+        'hide-calendars': !this.showCalendars,
+      }
     },
     isClear() {
-      return !this.dateRange.startDate || !this.dateRange.endDate;
+      return !this.dateRange.startDate || !this.dateRange.endDate
     },
   },
   watch: {
@@ -719,74 +719,74 @@ export default {
         this.monthDate,
         this.minDate || new Date(),
         this.maxDate
-      );
+      )
       this.changeLeftMonth({
         year: dt.getFullYear(),
         month: dt.getMonth() + 1,
-      });
+      })
     },
     maxDate() {
       let dt = this.$dateUtil.validateDateRange(
         this.nextMonthDate,
         this.minDate,
         this.maxDate || new Date()
-      );
+      )
       this.changeRightMonth({
         year: dt.getFullYear(),
         month: dt.getMonth() + 1,
-      });
+      })
     },
-    "dateRange.startDate"(value) {
-      if (!this.$dateUtil.isValidDate(new Date(value))) return;
+    'dateRange.startDate'(value) {
+      if (!this.$dateUtil.isValidDate(new Date(value))) return
 
       this.start =
         !!value && !this.isClear && this.$dateUtil.isValidDate(new Date(value))
           ? new Date(value)
-          : null;
+          : null
       if (this.isClear) {
-        this.start = null;
-        this.end = null;
+        this.start = null
+        this.end = null
       } else {
-        this.start = new Date(this.dateRange.startDate);
-        this.end = new Date(this.dateRange.endDate);
+        this.start = new Date(this.dateRange.startDate)
+        this.end = new Date(this.dateRange.endDate)
       }
     },
-    "dateRange.endDate"(value) {
-      if (!this.$dateUtil.isValidDate(new Date(value))) return;
+    'dateRange.endDate'(value) {
+      if (!this.$dateUtil.isValidDate(new Date(value))) return
 
-      this.end = !!value && !this.isClear ? new Date(value) : null;
+      this.end = !!value && !this.isClear ? new Date(value) : null
       if (this.isClear) {
-        this.start = null;
-        this.end = null;
+        this.start = null
+        this.end = null
       } else {
-        this.start = new Date(this.dateRange.startDate);
-        this.end = new Date(this.dateRange.endDate);
+        this.start = new Date(this.dateRange.startDate)
+        this.end = new Date(this.dateRange.endDate)
       }
     },
     open: {
       handler(value) {
-        if (typeof document === "object")
+        if (typeof document === 'object')
           this.$nextTick(() => {
             value
-              ? document.body.addEventListener("click", this.clickAway)
-              : document.body.removeEventListener("click", this.clickAway);
+              ? document.body.addEventListener('click', this.clickAway)
+              : document.body.removeEventListener('click', this.clickAway)
             if (!this.alwaysShowCalendars && this.ranges) {
               this.showCustomRangeCalendars = !Object.keys(this.ranges).find(
                 (key) =>
                   this.$dateUtil.isSame(
                     this.start,
                     this.ranges[key][0],
-                    "date"
+                    'date'
                   ) &&
-                  this.$dateUtil.isSame(this.end, this.ranges[key][1], "date")
-              );
+                  this.$dateUtil.isSame(this.end, this.ranges[key][1], 'date')
+              )
             }
-          });
+          })
       },
       immediate: true,
     },
   },
-};
+}
 </script>
 
 <style lang="scss">

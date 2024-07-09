@@ -1,4 +1,4 @@
-import { getDateUtil } from "./util";
+import { getDateUtil } from './util'
 
 export default {
   props: {
