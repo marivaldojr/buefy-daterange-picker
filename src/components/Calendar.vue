@@ -38,7 +38,7 @@
     <tbody>
       <tr>
         <th v-if="showWeekNumbers" class="week">{{ locale.weekLabel }}</th>
-        <th v-for="weekDay in locale.daysOfWeek" :key="weekDay">
+        <th v-for="(weekDay, index) in locale.daysOfWeek" :key="index">
           {{ weekDay }}
         </th>
       </tr>
